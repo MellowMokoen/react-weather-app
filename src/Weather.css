@@ -32,8 +32,8 @@
 }
 
 .weather .temperature {
-  font-size: 50px;
-  font-weight: 400;
+  font-size: 44px;
+  font-weight: bold;
   line-height: 64px;
 }
 
