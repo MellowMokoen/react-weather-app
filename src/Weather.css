@@ -1,4 +1,5 @@
 .weather {
+  font-family: Kanit;
   background-image: url(./background.jpg);
   height: 500px;
   color: white;
@@ -34,7 +35,7 @@
 }
 
 .weather .temperature {
-  font-size: 44px;
+  font-size: 43px;
   font-weight: bold;
   line-height: 64px;
 }
