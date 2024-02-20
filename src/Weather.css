@@ -1,8 +1,10 @@
 .weather {
-  color: gray;
+  background-image: url(./background.jpg);
+  height: 500px;
+  color: white;
   border: 1px solid gray;
-  margin: 20px auto;
-  padding: 16px;
+  margin: 50px auto;
+  padding: 56px;
   border-radius: 5px;
 }
 
@@ -41,4 +43,11 @@
   margin-left: 5px;
   position: relative;
   top: -25px;
+}
+
+.sentence {
+  text-align: center;
+  font-size: 24px;
+  opacity: 0.4;
+  padding-top: 50px;
 }
