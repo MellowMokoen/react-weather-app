@@ -2,23 +2,22 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 
-export default function Weather() {
-  const [ready, setready] = useState(false);
-  const [weatherData, setWeatherData] = useState({});
+export default function Weather(props) {
+  const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
     console.log(response.data);
     setWeatherData({
+      ready: true,
       temperature: response.data.main.temp,
-      wind: 12,
+      wind: response.data.wind.speed,
       city: response.data.name,
       description: response.data.weather[0].description,
       humidity: response.data.main.humidity,
-      iconUrl: "https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png",
+      icon: response.data.weather[0].icon,
     });
-    setready(true);
   }
 
-  if (ready) {
+  if (weatherData.ready) {
     return (
       <div className="weather">
         <form>
@@ -43,13 +42,13 @@ export default function Weather() {
         <h1>{weatherData.city}</h1>
         <ul>
           <li>Wednesday 08:00</li>
-          <li>{weatherData.description}</li>
+          <li className="text-capitalize">{weatherData.description}</li>
         </ul>
         <div className="row mt-4">
           <div className="col-6">
             <div className="clearfix">
               <img
-                src={weatherData.iconUrl}
+                src={weatherData.icon}
                 alt={weatherData.description}
                 className="float-left"
               />
@@ -62,9 +61,8 @@ export default function Weather() {
           </div>
           <div className="col-6">
             <ul>
-              <li>Precipitation: 15%</li>
-              <li>Humidity: {weatherData.humidity}%</li>
-              <li>Wind: 5 km/h</li>
+              <li>Humidity: {weatherData.humidity} %</li>
+              <li>Wind: {weatherData.wind} km/h</li>
             </ul>
           </div>
         </div>
@@ -73,8 +71,8 @@ export default function Weather() {
     );
   } else {
     const apiKey = "5c3947ac0468bdb0b2d7714c9e35d56e";
-    let city = "Cape Town";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}`;
     axios.get(apiUrl).then(handleResponse);
 
     return "Loading...";

@@ -1,3 +1,10 @@
+body {
+  background-image: url(./giphy.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 .App {
   max-width: 600px;
   margin: 0 auto;
