@@ -1,12 +1,36 @@
 .weather {
   font-family: Kanit;
-  background-image: url(./background.jpg);
-  height: 500px;
+  position: relative;
+  height: 80vh;
   color: white;
-  border: 1px solid gray;
   margin: 50px auto;
   padding: 56px;
   border-radius: 5px;
+  box-shadow: 4px 4px 4px 4px rgb(36, 29, 29);
+}
+
+.weather::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(./background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  filter: blur(4px);
+  z-index: -1;
+}
+
+@media screen and (max-width: 1300px) {
+  .weather {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .weather h1 {
@@ -17,6 +41,10 @@
 
 .weather form {
   margin-bottom: 20px;
+}
+
+form .btn {
+  box-shadow: 3px 3px rgb(78, 66, 66);
 }
 
 .weather ul {
