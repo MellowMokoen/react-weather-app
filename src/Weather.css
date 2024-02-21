@@ -29,9 +29,9 @@
 }
 
 .weather img {
-  height: 64px;
+  width: 100px auto;
+  height: 74px;
   margin-right: 10px;
-  display: inline-block;
 }
 
 .weather .temperature {
