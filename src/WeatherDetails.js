@@ -9,7 +9,7 @@ export default function WeatherDetails(props) {
         <FormattedDate date={props.data.date} />
         <li className="text-capitalize">{props.data.description}</li>
       </ul>
-      // Render the temperature, unit, and weather icon
+
       <div className="row mt-4">
         <div className="col-6">
           <div className="clearfix">
