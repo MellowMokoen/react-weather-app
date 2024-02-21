@@ -4,10 +4,15 @@ import "./Weather.css";
 import WeatherDetails from "./WeatherDetails";
 
 export default function Weather(props) {
+  // Initialize state variables for city and weather data
   const [city, setCity] = useState(props.defaultCity);
   const [weatherData, setWeatherData] = useState({ ready: false });
+
+  // Function to handle response from API call
   function handleResponse(response) {
     console.log(response.data);
+
+    // Update weather data state with response data
     setWeatherData({
       ready: true,
       temperature: response.data.main.temp,
@@ -20,6 +25,7 @@ export default function Weather(props) {
     });
   }
 
+  // Function to initiate API call to search for weather data
   function search() {
     const apiKey = "5c3947ac0468bdb0b2d7714c9e35d56e";
 
@@ -27,15 +33,18 @@ export default function Weather(props) {
     axios.get(apiUrl).then(handleResponse);
   }
 
+  // Function to handle form submission
   function handleSubmit(event) {
     event.preventDefault();
     search();
   }
 
+  // Function to handle city input change
   function handleCityChange(event) {
     setCity(event.target.value);
   }
 
+  // If weather data is ready, render weather information
   if (weatherData.ready) {
     return (
       <div className="weather">
@@ -62,6 +71,8 @@ export default function Weather(props) {
         <WeatherDetails data={weatherData} />
       </div>
     );
+
+    // If weather data is not ready, initiate search and display loading message
   } else {
     search();
     return "Loading...";
